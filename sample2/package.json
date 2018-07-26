@@ -1,0 +1,15 @@
+{
+  "name": "sample2",
+  "version": "1.0.0",
+  "description": "An orchestration API using Node.js that combines a CICS transaction expose as API and Db2 SQL INSERT expose as API",
+  "main": "sample-2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yves Tolod",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.87.0"
+  }
+}

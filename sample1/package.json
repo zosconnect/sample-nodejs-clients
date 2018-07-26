@@ -1,0 +1,15 @@
+{
+  "name": "sample1",
+  "version": "1.0.0",
+  "description": "Sample Orchestration API with Node.js that calls an IMS transaction exposed as API and a Web API",
+  "main": "sample-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yves Tolod",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.87.0"
+  }
+}
