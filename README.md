@@ -4,7 +4,6 @@ This repository contains Node.js sample applications to get you started on devel
 
 ## Prerequisites
  * The IBM SDK for Node.js on z/OS is installed and configured. There is a trial version available that you can download and use if you want to try Node.js on z/OS.  Refer to the [Node.js trial site](https://developer.ibm.com/node/sdk/ztp/) for additional information.
- * Enterprise COBOL (Optional). Sample 3 below uses a batch application written in COBOL. You need to compile the sample COBOL application to be able to test it.
  * z/OS Connect Enterprise Edition (Optional).  Sample 3 below uses a COBOL batch application to call a REST API on Node.js on z/OS.  The ability to call a REST API from a COBOL batch application is provided by z/OS Connect Enteprise Edition. Refer to the [z/OS Connect Enterprise Edition documentation](https://www.ibm.com/support/knowledgecenter/SS4SVW_3.0.0/com.ibm.zosconnect.doc/facilitating/facilitating.html) for additional information.
 
 ## Installing
@@ -15,30 +14,15 @@ This repository contains Node.js sample applications to get you started on devel
  mkdir nodeapp
  cd nodeapp
  ```
- * Initialize your project and link it to npm
- ```
- npm init
- ```
- This command will create a package.json file under the nodeapp folder you just created. The file contains information for all the npm packages you have downloaded to your project.  The command will ask you to enter a number of items. You can use default values for most of them except for the entry:
-```
-entry point: (index.js) 
-```
-You need to specify the actual name of the application like
-```
-sample-1.js
-```
  * Install *express* and *request* in the *nodeapp* directory
  ```
  npm install express --save
  npm install request --save
  ```
- * For Sample 3, also install *node-rules* in the *nodeapp* directory
- ```
- npm install node-rules --save
- ```
+
 ## Sample 1: An Orchestration API that combines an IMS transaction with a Web API
 **Description:** This sample uses the [IMS phonebook application (IVTNO)](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_15.1.0/com.ibm.ims15.doc.ins/ims_ivpsamples.htm). The phonebook application can *add a contact*, *delete a contact*, *display a contact*, and *update the contact*. The data is stored in an IMS database. In this sample, we will use the *display a contact* function to list information about the contact based on the last name. The REST API for the IMS transaction was created using [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_beta/com.ibm.zosconnect.doc/scenarios/ims_api_invoke.html).
-![Sample 1 diagram](https://github.ibm.com/yves-tolod/nodejs-zos-samples/blob/master/media/diag-sample1.png)
+![Sample 1 diagram](https://github.com/zosconnect/sample-nodejs-clients/blob/master/media/diag-sample1.png)
 Here is a sample output from the REST API that calls the IVTNO IMS transaction:
 ```
 {
@@ -105,7 +89,7 @@ http://<hostname>:50001/phone/contact/MILLER
 
 ## Sample 2: An Orchestration API that combines a CICS transaction with a Db2 REST API
 **Description:** This sample uses the [CICS catalog manager application (EGUI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.4.0/applications/example-application/dfhxa_t100.html). The catalog manager program can *inquire products in the catalog*, *get details of a specific item in the catalog*, *order an item in the catalog*, and other functions. In this sample, we will use the *order an item in the catalog* and *get details of a specific item in the catalog*. The sample will also insert order information into a Db2 table using REST API. The REST APIs for the CICS transaction were created using [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/scenarios/cics_api_create.html). For Db2, it uses the [Db2 REST service function](https://www.ibm.com/support/knowledgecenter/en/SSEPEK_12.0.0/restserv/src/tpc/db2z_restservices.html) and extends that with [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/designing/sar_rest_intro.html).  The products in the catalog (mobile phones) are stored in a [VSAM file](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zconcepts/zconcepts_169.htm).
-![Sample 2 diagram](https://github.ibm.com/yves-tolod/nodejs-zos-samples/blob/master/media/diag-sample2.png)
+![Sample 2 diagram](https://github.com/zosconnect/sample-nodejs-clients/blob/master/media/diag-sample2.png)
 
 This sample is an HTTP POST call and requires a JSON payload as input. The JSON payload must contain the following fields:
 ```
@@ -196,8 +180,3 @@ To find out all the orders successfully processed, you can issue the following G
 ```
 http://cap-sg-prd-2.integration.ibmcloud.com:16476/db2/catalog/order
 ```
-## Sample 3: Extending a COBOL batch application by calling a service (REST API) in Node.js
-**Description:** This sample uses the [node-rules npm package](https://www.npmjs.com/package/node-rules) as the rule engine. 
-![Sample 3 diagram](https://github.ibm.com/yves-tolod/nodejs-zos-samples/blob/master/media/diag-sample3.png)
-
-
