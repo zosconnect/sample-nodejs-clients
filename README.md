@@ -169,7 +169,7 @@ To find out details on a specific item, you can issue the following GET call fro
 ```
 http://cap-sg-prd-2.integration.ibmcloud.com:16476/product/catalog/mobile?itemID=0080
 ```
-To find out all the orders successfully processed, you can issue the following GET call from a web browser:
+To find out all the orders that were processed successfully, you can issue the following GET call from a web browser:
 ```
 http://cap-sg-prd-2.integration.ibmcloud.com:16476/db2/catalog/order
 ```
