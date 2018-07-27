@@ -47,7 +47,7 @@ After retrieving the contact information, it will extract additional information
   ]
 }
 ```
-To run the `sample-1.js`, issue the following command from a command window or Telnet session if using Node.js on z/OS:
+To run the `sample-1.js`, issue the following commands from a command window or Telnet session if using Node.js on z/OS:
 ``` 
 cd sample1
 node sample-1.js
@@ -124,7 +124,7 @@ Once product is ordered it is logged into a Db2 table in z/OS to keep track of t
 
 The sample first calls the API to process order for an item. After that, it checks for current inventory using the API to get details on the item that was ordered. And finally, the order is logged into an order history table in Db2. 
 
-To run the `sample-2.js`, issue the following command from a command window or Telnet session if using Node.js on z/OS:
+To run the `sample-2.js`, issue the following commands from a command window or Telnet session if using Node.js on z/OS:
 ``` 
 cd sample2
 node sample-2.js
