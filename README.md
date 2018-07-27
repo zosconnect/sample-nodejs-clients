@@ -12,8 +12,8 @@ This repository contains sample Node.js applications that demonstrates how you c
  * Install Node.js on your preferred platform (MacOS, Windows, Linux or z/OS). See the prerequisites section for information on installing the IBM SDK for Node.js on z/OS.
  * Open a command window (Note: You will need to use a telnet session when using Node.js on z/OS) and issue the following to install *express* and *request* in the *sample1* and *sample2* directories:
  ```
- npm install express --save
- npm install request --save
+ npm install express
+ npm install request
  ```
  
 ## Sample 1: An Orchestration API that combines an IMS transaction with a Web API
