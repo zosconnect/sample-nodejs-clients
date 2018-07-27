@@ -47,10 +47,9 @@ After retrieving the contact information, it will extract additional information
   ]
 }
 ```
-To try this sample, copy or upload `sample-1.js` to the **nodeapp** directory you created.
-
 To run the `sample-1.js`, issue the following command from a command window or Telnet session if using Node.js on z/OS:
 ``` 
+cd sample1
 node sample-1.js
 ```
 The following output is displayed on the terminal:
@@ -125,10 +124,9 @@ Once product is ordered it is logged into a Db2 table in z/OS to keep track of t
 
 The sample first calls the API to process order for an item. After that, it checks for current inventory using the API to get details on the item that was ordered. And finally, the order is logged into an order history table in Db2. 
 
-To try this sample, copy or upload `sample-2.js` to the **nodeapp** directory you created.
-
 To run the `sample-2.js`, issue the following command from a command window or Telnet session if using Node.js on z/OS:
 ``` 
+cd sample2
 node sample-2.js
 ```
 The following output is displayed on the terminal:
