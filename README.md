@@ -1,4 +1,4 @@
-# Sample Node.js applications to access z/OS assets using z/OS Connect Enterprise Edition
+# Sample Node.js applications on z/OS
 
 This repository contains sample Node.js applications that demonstrates how you can combine data from multiple sources with API orchestration. The samples calls REST APIs created by z/OS Connect Enterprise Edition to access z/OS applications and data hosted in subsystems such as CICS, IMS and Db2. The samples are designed to work on z/OS and non-z/OS environments.
 
