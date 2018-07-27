@@ -1,25 +1,19 @@
-# Sample applications for Node.js on z/OS
+# Sample Node.js applications to access z/OS assets using z/OS Connect Enterprise Edition
 
-This repository contains Node.js sample applications to get you started on developing Node.js applications on z/OS. The samples uses z/OS-based assets exposed as REST APIs using z/OS Connect Enterprise Edition.  The samples are designed to work on z/OS and non-z/OS environments.
+This repository contains sample Node.js applications that demonstrates how you can combine data from multiple sources with API orchestration. The samples calls REST APIs created by z/OS Connect Enterprise Edition to access z/OS applications and data hosted in subsystems such as CICS, IMS and Db2. The samples are designed to work on z/OS and non-z/OS environments.
 
 ## Prerequisites
  * The IBM SDK for Node.js on z/OS is installed and configured. There is a trial version available that you can download and use if you want to try Node.js on z/OS.  Refer to the [Node.js trial site](https://developer.ibm.com/node/sdk/ztp/) for additional information.
- * z/OS Connect Enterprise Edition (Optional).  Sample 3 below uses a COBOL batch application to call a REST API on Node.js on z/OS.  The ability to call a REST API from a COBOL batch application is provided by z/OS Connect Enteprise Edition. Refer to the [z/OS Connect Enterprise Edition documentation](https://www.ibm.com/support/knowledgecenter/SS4SVW_3.0.0/com.ibm.zosconnect.doc/facilitating/facilitating.html) for additional information.
 
 ## Installing
- * Clone this repository `git clone git://github.ibm.com/yves-tolod/nodejs-zos-samples.git`
+ * Clone this repository `git clone git://github.com/zosconnect/sample-nodejs-client.git`
  * Install Node.js on your platform (MacOS, Windows, Linux or z/OS). See the prerequisites section for information on installing the IBM SDK for Node.js on z/OS.
- * Open a command window (Note: You will need to use a telnet session when using Node.js on z/OS) and issue the following to create the directory for your sample Node.js application
- ```
- mkdir nodeapp
- cd nodeapp
- ```
- * Install *express* and *request* in the *nodeapp* directory
+ * Open a command window (Note: You will need to use a telnet session when using Node.js on z/OS) and issue the following to install *express* and *request* in the *sample1* and *sample2* directories:
  ```
  npm install express --save
  npm install request --save
  ```
-
+ 
 ## Sample 1: An Orchestration API that combines an IMS transaction with a Web API
 **Description:** This sample uses the [IMS phonebook application (IVTNO)](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_15.1.0/com.ibm.ims15.doc.ins/ims_ivpsamples.htm). The phonebook application can *add a contact*, *delete a contact*, *display a contact*, and *update the contact*. The data is stored in an IMS database. In this sample, we will use the *display a contact* function to list information about the contact based on the last name. The REST API for the IMS transaction was created using [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_beta/com.ibm.zosconnect.doc/scenarios/ims_api_invoke.html).
 ![Sample 1 diagram](https://github.com/zosconnect/sample-nodejs-clients/blob/master/media/diag-sample1.png)
