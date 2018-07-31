@@ -1,6 +1,6 @@
 # Sample Node.js applications on z/OS
 
-This repository contains sample Node.js applications that demonstrates how you can combine data from multiple sources with API orchestration. The samples call REST APIs created by [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/overview/what_is_new.html) to access z/OS applications and data hosted in subsystems such as CICS, IMS and Db2. The samples are designed to work on z/OS and non-z/OS environments.
+This repository contains sample Node.js applications that demonstrates how you can combine data from multiple sources with API orchestration. The samples use REST APIs created by [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/overview/what_is_new.html) to access z/OS applications and data hosted in subsystems such as CICS, IMS and Db2. The samples are designed to work on z/OS and non-z/OS environments.
 
 **Note:** For the REST APIs created by z/OS Connect Enterprise Edition, you also have the option to use [zosconnect-node](https://github.com/zosconnect/zosconnect-node) to call the REST APIs. 
 
