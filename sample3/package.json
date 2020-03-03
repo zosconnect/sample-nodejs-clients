@@ -1,0 +1,16 @@
+{
+  "name": "sample3",
+  "version": "1.0.0",
+  "description": "Sample Rules API for use with z/OS Connect API Requester demo",
+  "main": "sample-3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yves Tolod",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.16.3",
+    "node-rules": "^4.0.2",
+    "request": "^2.87.0"
+  }
+}
