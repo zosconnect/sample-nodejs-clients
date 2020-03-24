@@ -176,7 +176,7 @@ To find out all the orders that were processed successfully, you can issue the f
 http://cap-sg-prd-2.integration.ibmcloud.com:16476/db2/catalog/order
 ```
 
-## Sample 3: A Microservice API that contains a claims processing business rule
+## Sample 3: A Microservice API that contains a health claim business rule
 **Description:** This sample is the Node.js microservice API that provides the health claim business rule that is used in the [z/OS Connect EE GitHub Sample on API requester](https://github.com/zosconnect/zosconnect-sample-cobol-apirequester). The sample provides automatic approval for a health claim based on the claim type and claim amount submitted. It handles the following claim types: **MEDICAL**, **DRUG**, **DENTAL**. The claim amount limits are **100 for MEDICAL**, **800 for DENTAL**, and **1000 for DRUG**. If the amount exceeded these limits then the business rule will not approve the claim automatically. 
 ![Sample 3 diagram](https://github.com/zosconnect/sample-nodejs-clients/blob/master/media/diag-sample3.png)
 
