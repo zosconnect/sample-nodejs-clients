@@ -1,6 +1,8 @@
 # Sample Node.js applications on z/OS
 
-This repository contains sample Node.js applications that demonstrates how you can combine data from multiple sources with API orchestration. The samples use REST APIs created by [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/overview/what_is_new.html) to access z/OS applications and data hosted in subsystems such as CICS, IMS and Db2. The samples are designed to work on z/OS and non-z/OS environments.
+This repository contains sample Node.js applications that demonstrates how you can combine data from multiple sources with API orchestration (sample-1.js and sample-2.js). The samples use REST APIs created by [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/overview/what_is_new.html) to access z/OS applications and data hosted in subsystems such as CICS, IMS and Db2. The samples are designed to work on z/OS and non-z/OS environments.
+
+It also contains another sample of writing a microservices API with Node.js (sample-3.js). This sample contains a business rule for claims processing that was extracted from a COBOL program and created as microservices API using Node.js. 
 
 **Note:** For the REST APIs created by z/OS Connect Enterprise Edition, you also have the option to use [zosconnect-node](https://github.com/zosconnect/zosconnect-node) to call the REST APIs. 
 
@@ -173,3 +175,45 @@ To find out all the orders that were processed successfully, you can issue the f
 ```
 http://cap-sg-prd-2.integration.ibmcloud.com:16476/db2/catalog/order
 ```
+
+## Sample 3: A Microservice API that contains a claims processing business rule
+**Description:** This sample is the Node.js microservice API that provides the health claims business rule that is used in the [z/OS Connect EE GitHub Sample on API requester](https://github.com/zosconnect/zosconnect-sample-cobol-apirequester). The sample provides automatic approval for health claims based on the amount submitted. It handles the following claim types: **MEDICAL**, **DRUG**, **DENTAL**. The claim amount limits are **100 for MEDICAL**, **200 for DENTAL**, and **300 for DRUG**. If the amount exceeded these limits then the business rule will not approve the claim automatically. 
+![Sample 3 diagram](https://github.com/zosconnect/sample-nodejs-clients/blob/master/media/diag-sample3.png)
+
+To run the `sample-3.js`, issue the following commands from a command window or Telnet session if using Node.js on z/OS:
+``` 
+cd sample3
+node sample-3.js
+```
+The following output is displayed on the terminal:
+```
+Demo application listening on port 50003
+```
+To submit an approved claim, type the following from a REST client using GET:
+```
+http://<hostname>:50003/claim/rule?claimType=MEDICAL&claimAmount=100.00
+```
+Here is a sample output of a claim that is approved:
+
+  ```json
+  {
+   "claim-type": "MEDICAL",
+   "amount": "100.00",
+   "status": "Accepted",
+   "reason": "Normal claim"
+  }
+  ```
+To submit a claim that is not approved, type the following from a REST client using GET:
+```
+http://<hostname>:50003/claim/rule?claimType=MEDICAL&claimAmount=250.00
+```
+Here is a sample output of a claim that is not approved:
+
+  ```json
+  {
+    "claim-type": "MEDICAL",
+    "amount": "250.00",
+    "status": "Rejected",
+    "reason": "Amount exceeded $100. Claim require further review."
+  }
+  ```
