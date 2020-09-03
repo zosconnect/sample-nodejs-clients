@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "express": "^4.16.3",
-    "node-rules": "^4.0.2",
+    "node-rules": "^5.0.0",
     "request": "^2.87.0"
   }
 }
