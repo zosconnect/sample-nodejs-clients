@@ -91,7 +91,6 @@ function getClaimResult(req, res) {
 
      results['claim-type'] = claimData.claimType;
      results['amount'] = claimData.claimAmount;
-     var textMsg = '';
 
      if (result.result) {
      	  results['status'] = 'Accepted';
@@ -103,20 +102,14 @@ function getClaimResult(req, res) {
      	  switch(claimData.claimType) {
      	  	case 'MEDICAL' :
      	  			results['reason'] = 'Amount exceeded $100. Claim require further review.';
-     	  			textMsg = 'SHARE Demo: Submitted claim for ' + claimData.claimType + ' with amount $' + 
-     	  			          claimData.claimAmount + ' exceeded $100 limit. Claim require further review.'
      	  			break;
      	  			     	  	
      	  	case 'DENTAL' :
      	  			results['reason'] = 'Amount exceeded $800. Claim require further review.'; 
-     	  			textMsg = 'SHARE Demo: Submitted claim for ' + claimData.claimType + ' with amount ' + 
-     	  			          claimData.claimAmount + ' exceeded $800 limit. Claim require further review.'
      	  			break;     	  	
      	  	
      	  	case 'DRUG' :
      	  			results['reason'] = 'Amount exceeded $1000. Claim require further review.'; 
-     	  			textMsg = 'SHARE Demo: Submitted claim for ' + claimData.claimType + ' with amount ' + 
-     	  			          claimData.claimAmount + ' exceeded $1000 limit. Claim require further review.'
      	  			break;
      	  }      
      }
