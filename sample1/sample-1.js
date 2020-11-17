@@ -62,7 +62,7 @@ function getContactInfo(req, res) {
    // The REST end point below is using the IBM Cloud secure gateway service to enable
    // access to a private network where the original REST API is hosted
    //
-   var contactUrl = 'http://cap-sg-prd-2.integration.ibmcloud.com:16476/phonebook/contact/' + lastName;
+   var contactUrl = 'http://cap-sg-prd-4.securegateway.appdomain.cloud:20522/ims/phonebook/contact?lastname=' + lastName;
 
    httpReq.get(contactUrl, function(error, resp, body) {
 
