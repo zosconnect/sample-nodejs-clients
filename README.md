@@ -90,23 +90,23 @@ http://<hostname>:50001/phone/contact/MILLER
 This sample is an HTTP POST call and requires a JSON payload as input. The JSON payload must contain the following fields:
 ```
 {
-   "item" : "<item-num>",  (valid values: 0010, 0020, ..., 0210)
-   "userid" : "<user>",    (8-char user ID)
-   "dept" : "<dept-id>",   (8-char department ID)
-   "qty"  : n-qty,         (1-999)    
-   "street" : "<street>",  
-   "city" : "<city>",
-   "state" : "<state>",
-   "zipcode" : "<zipcode>"
+   "itemNumber" : "<item-num>",  (valid values: 0010, 0020, ..., 0210)
+   "userID" : "<user>",          (8-char user ID)
+   "chargeDept" : "<dept-id>",   (8-char department ID)
+   "orderQty"  : n-qty,          (1-999)    
+   "shiptoStreet" : "<street>",  
+   "shiptoCity" : "<city>",
+   "shiptoState" : "<state>",
+   "shiptoZipcode" : "<zipcode>"
 }
 ```
 When an order is received, the CICS transaction to process an order is called first, the following fields are used as input:
-   * User ID (userid)
-   * Department charge dode (dept)
-   * Item reference number (item)
-   * Order quantity (qty)
+   * User ID (userID)
+   * Department charge dode (chargeDept)
+   * Item reference number (itemNumber)
+   * Order quantity (orderQty)
 
-After order is processed, the get item details function is called. The following fields are returned:
+After order is processed, the inquire item function is called. The following fields are returned:
 
    * Item reference number
    * Item description
@@ -121,11 +121,12 @@ Once product is ordered it is logged into a Db2 table in z/OS to keep track of t
    * User ID
    * Description
    * Department charge code
-   * Quantity
+   * Order Quantity
+   * In-stock Quantity
    * Ship-to Address (Street, city, state, zipcode)
    * Order timestamp
 
-The sample first calls the API to process order for an item. After that, it checks for current inventory using the API to get details on the item that was ordered. And finally, the order is logged into an order history table in Db2. 
+The sample first calls the API to process order for an item. After that, it checks for current inventory using the API to inquire details on the item that was ordered. And finally, the order is logged into an order history table in Db2. 
 
 To run the `sample-2.js`, issue the following commands from a command window or Telnet session if using Node.js on z/OS:
 ``` 
@@ -138,42 +139,46 @@ Demo application listening on port 50002
 ```
 To test `sample-2.js`, type the following from REST client using POST:
 ```
-http://<hostname>:50002/product/mobile/order
+http://<hostname>:50002/product/order
 ```
 You need to specify a JSON payload like the one below
 ```
-{
-   "item" : "0080",
-   "userid" : "JOHNDOE",
-   "dept" : "DEPT01",
-   "qty"  : 2,    
-   "street" : "3039 E Cornwallis Rd",  
-   "city" : "Research Triangle Park",
-   "state" : "NC",
-   "zipcode" : "27709"
-}
+ {
+   "userID" : "JOHNDOE",
+   "chargeDept" : "AB1",
+   "itemNumber" : "0050",
+   "orderQty" : 2,
+   "shiptoStreet" : "3039 E Cornwallis Rd",
+   "shiptoCity" : "Research Triangle Park",
+   "shiptoState" : "NC",
+   "shiptoZipcode" : "27709"
+ }
 ```
 You will receive an output similar to the one below
 ```
 {
-    "item": "0080",
-    "order-qty": 2,
-    "desc": "Motorolla DEFY",
-    "updated-stock": 12,
-    "status": "ORDER SUCCESSFULLY PLACED"
+    "itemNumber": "0050",
+    "chargeDept": "AB1",
+    "userID": "JOHNDOE",
+    "orderQty": 2,
+    "inStockQty": 75,
+    "itemDescription": "Pencil with eraser 12pk",
+    "itemCost": "1.78",
+    "totalCost": "3.56",
+    "status": "ORDER COMPLETED SUCCESSFULLY"
 }
 ```
 To find out the list of items in the product catalog, you can issue the following GET call from a web browser:
 ```
-http://cap-sg-prd-2.integration.ibmcloud.com:16476/product/catalog/mobiles?startItemID=0010
+http://cap-sg-prd-4.securegateway.appdomain.cloud:20522/product/catalog/items?startItemID=0010
 ```
 To find out details on a specific item, you can issue the following GET call from a web browser:
 ```
-http://cap-sg-prd-2.integration.ibmcloud.com:16476/product/catalog/mobile?itemID=0080
+http://cap-sg-prd-4.securegateway.appdomain.cloud:20522/product/catalog/item?itemID=0050
 ```
 To find out all the orders that were processed successfully, you can issue the following GET call from a web browser:
 ```
-http://cap-sg-prd-2.integration.ibmcloud.com:16476/db2/catalog/order
+http://cap-sg-prd-4.securegateway.appdomain.cloud:20522/db2/supplies/all/orders
 ```
 
 ## Sample 3: A Microservice API that contains a health claim business rule
