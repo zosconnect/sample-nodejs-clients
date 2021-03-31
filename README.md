@@ -85,7 +85,8 @@ http://<hostname>:50001/phone/contact/MILLER
 
 ## Sample 2: An Orchestration API that combines a CICS transaction with a Db2 REST API
 **Description:** This sample uses the [CICS catalog manager application (EGUI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.4.0/applications/example-application/dfhxa_t100.html). The catalog manager program can *inquire products in the catalog*, *get details of a specific item in the catalog*, *order an item in the catalog*, and other functions. In this sample, we will use the *order an item in the catalog* and *get details of a specific item in the catalog*. The sample will also insert order information into a Db2 table using REST API. The REST APIs for the CICS transaction were created using [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/scenarios/cics_api_create.html). For Db2, it uses the [Db2 REST service function](https://www.ibm.com/support/knowledgecenter/en/SSEPEK_12.0.0/restserv/src/tpc/db2z_restservices.html) and extends that with [z/OS Connect Enterprise Edition](https://www.ibm.com/support/knowledgecenter/en/SS4SVW_3.0.0/com.ibm.zosconnect.doc/designing/sar_rest_intro.html).  The products in the catalog (office supplies) are stored in a [VSAM file](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zconcepts/zconcepts_169.htm).
-![Sample 2 diagram](https://github.com/zosconnect/sample-nodejs-clients/blob/master/media/diag-sample2c.png)
+
+![Sample 2 diagram](https://github.com/zosconnect/sample-nodejs-clients/blob/master/media/diag-sample2b.png)
 
 This sample is an HTTP POST call and requires a JSON payload as input. The JSON payload must contain the following fields:
 ```
